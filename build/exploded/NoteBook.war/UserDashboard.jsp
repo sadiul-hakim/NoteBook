@@ -4,14 +4,23 @@
     Author     : Hakim
 --%>
 
-<%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@page contentType="text/html" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
-    </head>
+    <%@include file="Head.jsp" %>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="DefaultNavbar.jsp" %>
+        
+        <main class="container my-4">
+            <div class="row">
+                <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+                    <img src="img/notes.png" alt="notepad" width="300px" height="320px"/>
+                    <h1>START TAKING YOUR NOTES</h1>
+                    <a href="AddNote.jsp" class="btn btn-outline-dark">Start Here</a>
+                </div>
+            </div>
+        </main>
+        
+        <%@include file="Footer.jsp" %>
     </body>
 </html>

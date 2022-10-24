@@ -4,14 +4,40 @@
     Author     : Hakim
 --%>
 
-<%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@page contentType="text/html" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
-    </head>
+    <%@include file="Head.jsp" %>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="DefaultNavbar.jsp" %>
+        
+        <main class="card w-25 mx-auto my-5">
+            <div class="card-header">
+                <h2>User Register</h2>
+            </div>
+            <div class="card-body">
+                <form action="RegisterServlet" method="post">
+                    <div class="form-group mb-2">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" name="fullname" class="form-control"/>
+                        
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control"/>
+                        
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control"/>
+                        
+                    </div>
+                    <div class="form-group mb-2">
+                        <button type="submit" class="btn btn-dark">Register</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        
     </body>
 </html>

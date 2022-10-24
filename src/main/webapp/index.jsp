@@ -16,8 +16,8 @@
                     <i class="fa fa-book"></i> E Notes-Save Your Notes
                 </h1>
                 <div class="d-flex">
-                    <a class="btn btn-light mx-2" href="">Login</a>
-                    <a class="btn btn-light mx-2" href="">Register</a>
+                    <a class="btn btn-light mx-2" href="UserLogin.jsp">Login</a>
+                    <a class="btn btn-light mx-2" href="UserRegister.jsp">Register</a>
                 </div>
             </div>
         </main>

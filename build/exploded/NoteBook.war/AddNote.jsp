@@ -7,11 +7,33 @@
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
-    </head>
+    <%@include file="Head.jsp" %>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="UserNavbar.jsp" %>
+        
+        <main class="container my-5">
+            <h2>Add Your Notes</h2>
+            <div class="row">
+                <div class="col-12">
+                    <form action="AddNoteServlet" method="post">
+                        <div class="form-group my-2">
+                            <label form="title">Title</label>
+                            <input type="text" class="form-control" name="title" required="true"/>
+                        </div>
+                        <div class="form-group my-2">
+                            <label form="note">Note Content</label>
+                            <textarea rows="5" class="form-control" name="note">
+                                
+                            </textarea>
+                        </div>
+                        <div class="form-group my-2">
+                            <button class="btn btn-dark"><i class="fa fa-plus-square-o"></i> Add Note</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <%@include file="Footer.jsp" %>
     </body>
 </html>

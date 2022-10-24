@@ -13,10 +13,15 @@ import java.util.stream.Collectors;
 public class ValidationUtil {
 
     private final Validator validator;
+    private static final ValidationUtil INSTANCE=new ValidationUtil();
 
     public ValidationUtil() {
         var validationFactory = Validation.buildDefaultValidatorFactory();
         validator = validationFactory.getValidator();
+    }
+
+    public static ValidationUtil getINSTANCE() {
+        return INSTANCE;
     }
 
     public <T> Map<String, String> validate(T object) {
