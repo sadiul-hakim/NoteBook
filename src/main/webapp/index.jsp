@@ -10,7 +10,17 @@
     <%@include file="Head.jsp" %>
     <body>
         <%@include file="DefaultNavbar.jsp" %>
-        <h1>Hello World!</h1>
+        <main class="home-main">
+            <div class="home-content d-flex flex-column justify-content-center align-items-center p-5">
+                <h1 class="text-light">
+                    <i class="fa fa-book"></i> E Notes-Save Your Notes
+                </h1>
+                <div class="d-flex">
+                    <a class="btn btn-light mx-2" href="">Login</a>
+                    <a class="btn btn-light mx-2" href="">Register</a>
+                </div>
+            </div>
+        </main>
     </body>
     <%@include file="Footer.jsp" %>
 </html>
