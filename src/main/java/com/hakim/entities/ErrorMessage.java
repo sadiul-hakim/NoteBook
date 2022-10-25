@@ -27,6 +27,6 @@ public class ErrorMessage implements Message {
     
     @Override
     public void clear(){
-        message=Optional.of(null);
+        message=Optional.ofNullable(null);
     }
 }

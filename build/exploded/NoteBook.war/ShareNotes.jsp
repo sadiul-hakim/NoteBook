@@ -5,6 +5,19 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@page import="com.hakim.dao.user.User" %>
+<%@page import="com.hakim.entities.SecurityContext" %>
+
+<%
+    
+    User user=SecurityContext.getCurrentUser(request);
+    boolean isAuthenticated=SecurityContext.isAuthenticated(request);
+    
+    if(!isAuthenticated){
+        request.getRequestDispatcher("UserLogin.jsp").forward(request,response);
+    }
+    
+%>
 <!DOCTYPE html>
 <html>
     <%@include file="Head.jsp" %>
@@ -17,10 +30,10 @@
                 <div class="col-md-10 offset-1">
                     <form action="SearchUserServlet" method="post" class="row">
                         <div class="form-group col-10">
-                            <input type="search" class="form-control" name="search"/>
+                            <input type="search" class="form-control" name="search" placeholder="Search Friend By Unique Id"/>
                         </div>
                         <div class="form-group col-2">
-                            <input type="sub,it" class="btn btn-dark" value="Search"/>
+                            <input type="submit" class="btn btn-dark" value="Search"/>
                         </div>
                     </form>
                 </div>

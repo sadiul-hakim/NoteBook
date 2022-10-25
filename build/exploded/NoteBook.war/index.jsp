@@ -5,6 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@page import="com.hakim.entities.SecurityContext" %>
+
+<%
+    
+    boolean isAuthenticated=SecurityContext.isAuthenticated(request);
+    
+    if(isAuthenticated){
+        request.getRequestDispatcher("UserDashboard.jsp").forward(request,response);
+    }
+    
+%>
 <!DOCTYPE html>
 <html>
     <%@include file="Head.jsp" %>

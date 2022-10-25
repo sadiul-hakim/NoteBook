@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            RequestDispatcher dispatcher=request.getRequestDispatcher("UserLogin.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("UserRegister.jsp");
             
             String fullname=request.getParameter("fullname");
             String email=request.getParameter("email");
@@ -54,13 +54,20 @@ public class RegisterServlet extends HttpServlet {
             Map<String,String> errors=ValidationUtil.getINSTANCE().validate(dto);
             
             if(!errors.isEmpty()){
-                //out.print("<div class=\"alert alert-danger mb-0\">%s</div>".formatted());
+               
                 request.setAttribute("errors", errors);
                 dispatcher.forward(request, response);
             }
             
-            
-            
+           boolean registered = service.userRegister(dto);
+           
+           if(!registered){
+               out.print("<div class=\"alert alert-danger mb-0\">%s</div>".formatted(errorMessage.getMessage().get()));
+               dispatcher.include(request, response);
+           }else{
+               response.sendRedirect("UserLogin.jsp");
+           }
+           
         }
     }
     

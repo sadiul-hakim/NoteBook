@@ -5,6 +5,19 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@page import="com.hakim.dao.user.User" %>
+<%@page import="com.hakim.entities.SecurityContext" %>
+
+<%
+    
+    User user=SecurityContext.getCurrentUser(request);
+    boolean isAuthenticated=SecurityContext.isAuthenticated(request);
+    
+    if(!isAuthenticated){
+        request.getRequestDispatcher("UserLogin.jsp").forward(request,response);
+    }
+    
+%>
 <!DOCTYPE html>
 <html>
     <%@include file="Head.jsp" %>

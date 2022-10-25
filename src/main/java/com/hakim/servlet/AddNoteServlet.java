@@ -1,5 +1,11 @@
 package com.hakim.servlet;
 
+import com.hakim.dao.note.NoteDTO;
+import com.hakim.dao.note.NoteRepoImp;
+import com.hakim.dao.note.NoteSerImp;
+import com.hakim.dao.note.NoteService;
+import com.hakim.entities.ErrorMessage;
+import com.hakim.entities.Message;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -12,7 +18,8 @@ import java.io.PrintWriter;
  */
 @WebServlet(name = "AddNoteServlet", urlPatterns = {"/AddNoteServlet"})
 public class AddNoteServlet extends HttpServlet {
-
+    private final Message errorMessage=new ErrorMessage();
+    private final NoteService service=new NoteSerImp(new NoteRepoImp(errorMessage), errorMessage);
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -27,15 +34,22 @@ public class AddNoteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddNoteServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddNoteServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           String title=request.getParameter("title");
+           String description=request.getParameter("description");
+           int uid=Integer.parseInt(request.getParameter("uid"));
+           
+            NoteDTO dto=new NoteDTO(uid, title, description);
+            
+            boolean isSaved=service.saveNote(dto);
+            
+            if(!isSaved){
+                out.print("<div class=\"alert alert-danger mb-0\">%s</div>".formatted(errorMessage.getMessage().get()));
+                request.getRequestDispatcher("AddNote.jsp").include(request, response);
+            }else{
+                out.print("<div class=\"alert alert-success mb-0\">Note saved successfully.</div>");
+                request.getRequestDispatcher("AddNote.jsp").include(request, response);
+            }
+            
         }
     }
 
