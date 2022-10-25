@@ -11,4 +11,5 @@ public interface UserRepository {
     Optional<User> login(LoginDTO dto);
     Optional<User> getUser(String email);
     Optional<User> getUserById(int id);
+    Optional<User> getUserByUniqueId(String id);
 }

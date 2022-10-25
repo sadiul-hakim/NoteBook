@@ -21,18 +21,6 @@
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="AddNote.jsp">
-                            <i class="fa fa-plus-square"></i> Add Note
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="ShowNotes.jsp">
-                            <i class="fa fa-sticky-note"></i> Show Notes
-                        </a>
-                    </li>
-
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                      <li class="nav-item btn">

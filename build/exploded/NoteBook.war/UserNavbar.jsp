@@ -32,15 +32,17 @@
                             <i class="fa fa-sticky-note"></i> Show Notes
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="SharedNotes.jsp">
+                            <i class="fa fa-sticky-note"></i> Shared Notes
+                        </a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item btn text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                       
-                            <i class="fa fa-user-circle-o"></i> <%= user.getFullname()%>
-                       
+                    <li class="nav-item nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa fa-user-circle-o"></i> <%= user.getFullname()%>
                     </li>
-                    <li class="nav-item btn">
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="UserLogoutServlet">
                             <i class="fa fa-sign-out"></i> Logout
                         </a>

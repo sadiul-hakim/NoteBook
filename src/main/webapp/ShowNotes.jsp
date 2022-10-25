@@ -39,14 +39,15 @@
                     </div>
                     <div class="d-flex col-2 justify-content-between align-items-center">
                         <a href="" class="btn btn-dark"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-dark"><i class="fa fa-share-alt"></i></a>
-                        <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        <a href="ShareNote.jsp?id=<%=n.getId()%>" class="btn btn-dark"><i class="fa fa-share-alt"></i></a>
+                        <a href="DeleteNoteServlet?id=<%= n.getId()%>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </div>
                 </li>
+
                 <%}%>
             </ul>
         </main>
 
-        
+
     </body>
 </html>

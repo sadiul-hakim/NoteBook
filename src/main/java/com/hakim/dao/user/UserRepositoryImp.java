@@ -182,5 +182,50 @@ public class UserRepositoryImp implements UserRepository {
 
         return user;
     }
+    
+    @Override
+    public Optional<User> getUserByUniqueId(String id) {
+        Optional<User> user = Optional.ofNullable(null);
+        ResultSet set = null;
+        try ( Connection connection = ConnectionProvider.getConnection()) {
+            String query = "select * from users where uniqueid=?";
+
+            try ( PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setString(1, id);
+
+                set = statement.executeQuery();
+
+                if (set.next()) {
+                    int uid = set.getInt("id");
+                    String em = set.getString("email");
+                    String fullname = set.getString("fullname");
+                    String password = set.getString("password");
+                    String uniqueId = set.getString("uniqueid");
+
+                    user = Optional.of(new User(uid, fullname, em, password, uniqueId));
+
+                } else {
+                    errorMessage.clear();
+                    errorMessage.setMessage("User not available");
+                }
+
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+            errorMessage.clear();
+            errorMessage.setMessage("Could not get User.Please Try Again!");
+        } finally {
+            if (set != null) {
+                try {
+                    set.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepositoryImp.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return user;
+    }
 
 }
